@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GP DISTRIBUCIONES</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <style type="text/css">
+			.w3-merriweather {
+			  font-family: "Merriweather", serif;
+			}
+			#loader {
+			  position: absolute;
+			  left: 50%;
+			  top: 50%;
+			  z-index: 1;
+			  width: 120px;
+			  height: 120px;
+			  margin: -76px 0 0 -76px;
+			  border: 16px solid #f3f3f3;
+			  border-radius: 50%;
+			  border-top: 16px solid #000000;
+			  -webkit-animation: spin 2s linear infinite;
+			  animation: spin 2s linear infinite;
+			}
+
+			@-webkit-keyframes spin {
+			  0% { -webkit-transform: rotate(0deg); }
+			  100% { -webkit-transform: rotate(360deg); }
+			}
+			.notSelTxt{
+			  -webkit-user-select: none; /* Safari */
+			  -ms-user-select: none; /* IE 10 and IE 11 */
+			  user-select: none; /* Standard syntax */
+			}
+			@keyframes spin {
+			  0% { transform: rotate(0deg); }
+			  100% { transform: rotate(360deg); }
+			}
+			.bar-search {
+			  outline: none !important;
+			  padding: 7px 7px 9px 7px;
+			  color: #333;
+			  font-size: 16px;
+			  height: 39px;
+			  margin-top: 10px;
+			}
+			.bar-height{
+			  height: 60px;
+			}
+			.bar-logo{
+			  margin-top: 5px;
+			  height: 50px;
+			  width: 50px;
+			}
+			.bar-cart{
+			  padding-top: 20px;
+			  padding-left: 5%;
+			  width:30%;
+			}
+			.bar-neg{
+			  overflow: hidden;
+			  width:300px;
+			   text-overflow: ellipsis;
+			   display: -webkit-box;
+			   -webkit-line-clamp: 2;
+			   -webkit-box-orient: vertical;
+			   line-height: normal;
+			}
+
+			.bar-neg-sub{
+			  display: none;
+			}
+			.cnt-ctr-lar{
+			  margin-top: 100px;
+			}
+			.cnt-ctr-sml{
+
+			    display: none;
+			    background: #FFF;
+			}
+
+			.thbGrd{
+			  max-width: 98%;
+			  max-height: 98%;
+			  font-size: 140px;
+			}
+
+			.inpDraLef{
+			  position: absolute;
+			  margin-top: 10px;
+			  margin-left: 5px;
+			}
+
+			.btnWhts{
+			  padding: 5px;
+			  position:fixed;
+			  width:60px;
+			  height:60px;
+			  bottom:40px;
+			  right:40px;
+			  background-color:#25d366;
+			  color:#FFF;
+			  border-radius:50px;
+			  text-align:center;
+			  font-size:30px;
+			  box-shadow: 2px 2px 3px #999;
+			  z-index:100;
+			}
+			.ctnItm{
+			  min-height: 800px;
+			}
+			.ctnCtgDro{
+			  max-height: 300px;
+			  overflow: auto;
+			  width: 250px;
+			}
+			.ctnSrtDro{
+			  width: 180px;
+			}
+			.fxd{
+			  position: fixed;
+			  top:0;
+			  left:0;
+			  width: 100%;
+			  z-index: 1000;
+			}
+			.mrgItm{
+			  margin-left: 8%;
+			  margin-right: 8%;
+			}
+			.pointer{
+				cursor: pointer;
+			}
+			.btnPag{
+				color: #1A73E8;
+				border: none;
+				background: transparent;
+			}
+			.pagCur{
+				padding-top: 5px;
+				padding-bottom: 5px;
+				padding-left: 12px;
+				padding-right: 12px;
+				background: #0000000C;
+				font-weight: bold;
+			}
+			.spc50{
+				margin-top: 50px;
+			}
+			.inNum{
+			  	width: 90px;
+			  	text-align: center;
+			 }
+
+			@media screen and (max-width: 1200px) {
+			  .bar-cart{
+			    padding-top: 20px;
+			    padding-left: 3%;
+			    width:20%;
+			  }
+			  .mrgItm{
+			    margin-left: 4%;
+			    margin-right: 4%;
+			  }
+			}
+
+			@media screen and (max-width: 760px) {
+			  .bar-neg{
+			    display: none;
+			  }
+			  .bar-cart{
+			    padding-left: 16px;
+			    width:80px;
+			  }
+
+
+			  .bar-neg-sub{
+			    display: block;
+			  }
+			  .content-cat{
+			    display: none;
+			  }
+			  .cnt-ctr-lar{
+			    display: none;
+			  }
+			  .cnt-ctr-sml{
+			    display: block;
+			    background: #FFF;
+			  }
+
+			  .ctnItm{
+			    min-height: 400px;
+			  }
+			  .mrgItm{
+			    margin-left: 2%;
+			    margin-right: 2%;
+			  }
+			  .btnPag{
+				color: #1A73E8;
+				border: none;
+				background: transparent;
+				font-size: 11px;
+			  }
+			  .spc50{
+				margin-top: 25px;
+			  }
+			  .inNum{
+			  	width: 60px;
+			  	text-align: center;
+			  }
+
+			}
+
+		</style>
+
+
+    </head>
+    <body ng-app='app' style="background-color: #ebebeb;" ng-controller='ctrMan' ng-cloack>
+
+        <div id="loader"></div>
+        <div id="ctnMan" style="visibility: hidden;">
+            <div class="w3-row {{clt}} fxd" >
+                <div class="w3-col w3-left w3-container bar-height" style="width:80px">
+                    <img id="lg" src="logo.jpg" class="w3-round bar-logo" alt="">
+                </div>
+                <div class="w3-col w3-left w3-container bar-height bar-neg">
+                    <h4 id="labNeg"  class="w3-merriweather" style="font-weight: bold; line-height: 22px;margin: 5px 0px; line-height: 25px; visibility: hidden;" ng-model="ngc">{{ngc}}</h4>
+                </div>
+                <div class="w3-col w3-right w3-center bar-height bar-cart" >
+                    <div ng-hide='!crt'>
+                        <i class="fa fa-shopping-cart  w3-xlarge pointer w3-left" ng-click='myCrt()' ></i>
+                        <span id="bdgCrt" class="w3-badge w3-red w3-small w3-left" style="margin-top:-5px;margin-left: 1px;">0</span>
+                    </div>
+
+                </div>
+                <div class="w3-rest bar-height">
+                    <input class="w3-input w3-border w3-round bar-search w3-merriweather" placeholder="{{txtBsc+'...'}}" type="text" maxlength="30" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" ng-model="srch" ng-init="srch=''" ng-Keyup="configPages()">
+                </div>
+            </div>
+            <div class="w3-container w3-merriweather w3-center {{clt}}  bar-neg-sub" style="margin-top:60px;" ng-model="ngc">
+                <h3 ng-hide="ngc.length>15">{{ngc}}</h3><h5 ng-hide="ngc.length<16">{{ngc}}</h5>
+            </div>
+
+
+            <div class="w3-row cnt-ctr-sml w3-merriweather w3-card">
+                <div class="w3-container w3-col s5 w3-center" >
+                    <div onclick="document.getElementById('modCtg').style.display='block'" ng-hide="ctgs.length<2">
+                        <h4 class="notSelTxt" style="color: {{cblu}};">{{txtCtg}}</h4>
+                    </div>
+
+
+
+                </div>
+                <div class="w3-container w3-col s2 w3-center"><h4 style="color: #00000021;">|</h4></div>
+                <div class="w3-container w3-col s5 w3-center" onclick="document.getElementById('modSrt').style.display='block'">
+                    <h4 class="notSelTxt" style="color: {{cblu}};">{{txtSrt}}</h4>
+                </div>
+            </div>
+
+            <div class="w3-container cnt-ctr-lar">
+
+                <div class="w3-left w3-merriweather" style="margin-left:50px;" ng-hide="ctgs.length<2">
+                    {{txtCtg}}
+                    <div class="w3-dropdown-hover w3-merriweather">
+                        <button class="w3-button {{clt}}" style="width:250px">{{txtCtgCrt}}</button>
+                        <div class="w3-dropdown-content w3-bar-block ctnCtgDro {{clt}}" >
+                            <a href="" class="w3-bar-item w3-button" ng-repeat='ctg in ctgs' ng-click='selCtg(ctg)'>{{ctg.n}}</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="w3-right w3-merriweather" style="margin-right:50px;">
+                    {{txtSrt}}
+                    <div class="w3-dropdown-hover w3-merriweather">
+                        <button class="w3-button {{clt}}" style="width:180px">{{txtSrtCrt}}</button>
+                        <div class="w3-dropdown-content w3-bar-block ctnSrtDro {{clt}}">
+                            <a href="" class="w3-bar-item w3-button" ng-click="selSrt(0)">{{txtAlf}}</a>
+                            <a href="" class="w3-bar-item w3-button" ng-click="selSrt(1)">{{txtMyp}}</a>
+                            <a href="" class="w3-bar-item w3-button" ng-click="selSrt(2)">{{txtMnp}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="w3-container spc50" >
+
+                <div ng-init='configPages()'  class="w3-row-padding ctnItm">
+                    <div class="w3-col s12 m6 l4" ng-repeat='itm in itmsCur | orderBy:sort| startFromGrid: currentPage * pageSize | limitTo: pageSize '>
+                        <div class="w3-panel w3-card w3-white mrgItm w3-merriweather">
+                            <div ng-hide="!img"  class="w3-container w3-margin-bottom w3-center" style="height: 260px">
+                                <img ng-hide="{{itm.l=='null'?true:false}}" src="{{itm.l+'.jpg'}}" class="w3-round thbGrd" onload="ajIm(this)">
+                                <i ng-hide="{{itm.l=='null'?false:true}}" class="fa fa-image w3-round thbGrd" style="margin-top:60px;"></i>
+
+                            </div>
+                            <div class="w3-margin-top w3-margin-bottom w3-border-bottom"></div>
+                            <p class="w3-small" style="line-height: 0.7;" ng-hide="cla">{{itm.k}}</p>
+                            <p class="w3-small" style="line-height: 0.7;" ng-hide="uni">{{itm.u}}</p>
+                            <p style="line-height: 1.1; height: 35px;">{{itm.d}}</p>
+
+                            <div class="w3-row w3-center w3-margin-top w3-margin-bottom" style="height:40px;">
+                                <div class="w3-col w3-right" style="width:60px">
+
+                                    <i class="fa fa-cart-plus w3-xxlarge pointer" ng-click='addCrt($event.currentTarget,itm)'  style="color: {{cblu}};" ng-hide='!crt'></i>
+                                </div>
+                                <div class="w3-rest w3-center">
+                                    <label ng-class="{'w3-large':itm.p.length>12,'w3-xlarge':itm.p.length<=12}">{{itm.p}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='btn-group w3-center spc50'>
+                    <button type='button' class='w3-merriweather btnPag pointer' ng-hide='currentPage == 0' ng-click='ntr()'>< {{txtPrv}}</button>
+                    <label class="w3-merriweather w3-large w3-margin-left pagCur">{{currentPage+1}}</label><label class="w3-merriweather w3-large w3-margin-right">{{' / '+ pages.length }}</label>
+                    <button type='button' class='w3-merriweather btnPag pointer' ng-hide='currentPage >= itmsCur.length/pageSize - 1' , ng-click='nxt()'>{{txtNxt}} ></button>
+                </div>
+
+            </div>
+
+            <br><br><br>
+            <footer class="w3-container w3-padding-32 spc50 {{clt}}">
+                <div class="w3-row-padding w3-center">
+                    <div class="{{ txtInf==null||txtInf==''?'':'w3-half' }}" ng-hide="txtTel==null||txtTel==''?true:false">
+                        <div class="w3-container" id="contact">
+                            <h4 class="w3-merriweather">{{ngc}}</h4>
+                            <a href="tel:{{txtTel}}" ><i class="fa fa-phone"></i>{{txtTel}}</a><br>
+                            <a class="w3-margin-top" href="mailto:{{txtCor}}" ng-hide="txtCor==''||txtCor==null?true:false"><i class="fa fa-envelope"></i>{{txtCor}}</a>
+                        </div>
+                    </div>
+
+                    <div class="{{ txtTel==null||txtTel==''?'':'w3-half' }}" ng-hide="txtInf==null||txtInf==''?true:false">
+                        <p id="textInf" ></p>
+                    </div>
+
+
+                </div>
+                <div style="height:90px" ng-hide="!wat"></div>
+            </footer>
+            <a ng-hide="!wat" href="https://api.whatsapp.com/send?phone={{txtTel+'&text=%20'}}" class="btnWhts" target="_blank">
+                <i class="fa fa-whatsapp w3-xxxlarge"></i>
+            </a>
+
+
+            <div id="modCrt" class="w3-modal" style="padding-top:30px;z-index: 3000;">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px;overflow: auto; height: 90%;">
+
+                    <div class="w3-center"><br>
+                        <span onclick="document.getElementById('modCrt').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">{{clo}} &times;</span>
+                    </div>
+                    <form class="w3-container w3-margin-top" ng-submit="snd()">
+                        <div class="w3-section">
+                            <div class="w3-padding-small">
+                                <i class="fa fa-user w3-xlarge inpDraLef"></i><input class="w3-input w3-border" style="padding-left: 35px;" placeholder="{{txtPlaNam}}" type="text" ng-model="namc" required>
+                            </div>
+
+                            <input class="w3-button w3-block w3-section w3-padding w3-margin-top w3-merriweather {{clt}}" type="submit" value="{{txtSct}}"  ng-hide="btc">
+                            <div class="w3-center" ng-hide="lod"><i class="fa fa-spinner w3-jumbo w3-spin"></i></div>
+                            <p ng-hide="itmsCrt.itms.length>0?true:false"  class="w3-display-middle">{{txtSin}}</p>
+                            <div class="w3-row w3-border-bottom w3-padding-16" ng-repeat='itm in itmsCrt.itms'>
+                                <div ng-hide="!img"  class="w3-col s3 m2 l2 w3-center">
+                                    <img ng-hide="{{itm.l=='null'?true:false}}" src="{{itm.l+'.jpg'}}" class="w3-round" style="width:90%;">
+
+                                    <i ng-hide="{{itm.l=='null'?false:true}}" class="fa fa-image w3-jumbo w3-round" style="width:90%;"></i>
+
+                                </div>
+                                <div class="w3-col s9 m10 l10">
+                                    <span class="w3-margin-left w3-merriweather" ng-hide="cla">{{itm.k}}</span><br>
+                                    <span class="w3-margin-left w3-merriweather" ng-hide="uni">{{itm.u}}</span><br>
+                                    <span class="w3-margin-left w3-merriweather">{{itm.d}}</span>
+                                    <div class="w3-row">
+                                        <div class="w3-col s2 m5 l5 w3-text-red">
+                                            <i class="fa fa-trash w3-xlarge w3-right" style="margin-top: 5px;" ng-click='delItmCrt(itm)'></i>
+                                        </div>
+                                        <div class="w3-col s10 m7 l7 ">
+                                            <i class="fa fa-plus-circle w3-xlarge w3-margin-right w3-right" ng-click='itm.q=itm.q+1' style="margin-top: 5px;"></i>
+
+                                            <span class="w3-margin-left w3-margin-right w3-xlarge w3-right"><input class="inNum" type="text" ng-model="itm.q" ></span>
+                                            <i class="fa fa-minus-circle w3-xlarge w3-right" ng-click='itm.q=itm.q-1<0?itm.q:itm.q-1' style="margin-top: 5px;"></i>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+
+            <div id="modSrt" class="w3-modal" style="z-index: 3000;">
+                <div class="w3-modal-content w3-card-4">
+                    <header class="w3-container {{clt}}">
+                        <span onclick="document.getElementById('modSrt').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                        <h2>{{txtSrt}}</h2>
+                    </header>
+                    <div class="w3-container">
+                        <ul class="w3-ul w3-border-bottom">
+                            <li class="w3-container notSelTxt" ng-click="selSrt(0)">{{txtAlf}}</li>
+                            <li class="w3-container notSelTxt" ng-click="selSrt(1)">{{txtMyp}}</li>
+                            <li class="w3-container notSelTxt" ng-click="selSrt(2)">{{txtMnp}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modCtg" class="w3-modal" style="z-index: 3000;">
+                <div class="w3-modal-content w3-card-4">
+                    <header class="w3-container {{clt}}">
+                        <span onclick="document.getElementById('modCtg').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                        <h2>{{txtCtg}}</h2>
+                    </header>
+                    <div class="w3-container" style="overflow: auto; max-height: 320px;">
+                        <ul class="w3-ul w3-monospace" ng-repeat='ctg in ctgs'>
+                            <li class="w3-border-bottom w3-container" ng-click='selCtg(ctg)'>{{ctg.n}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <script type="text/javascript">
+
+			angular.module('app', [])
+			  .controller('ctrMan',
+			    function($scope) {
+			      var modCtg = document.getElementById('modCtg');
+			      var modSrt = document.getElementById('modSrt');
+			      var modCrt = document.getElementById('modCrt');
+			      var bdgCrt = document.getElementById("bdgCrt");
+			      window.onclick = function(event) {
+			        if (event.target == modCtg) {
+			          modCtg.style.display = "none";
+			        }else if(event.target == modSrt){
+			          modSrt.style.display = "none";
+			        }
+			        else if(event.target == modCrt){
+			          modCrt.style.display = "none";
+			        }
+			      }
+			      $scope.currentPage = 0;
+			      $scope.pagSiz = 0;
+			      $scope.pageSize = 6;
+			      $scope.pages = [];
+			      $scope.itms = [];
+			      $scope.itmsCur = [];
+			      $scope.ctgs = [];
+			      $scope.itmsCrt = [];
+			      $scope.txtSrt = '...';
+			      $scope.txtCtg = '...';
+			      $scope.txtAlf = '...';
+			      $scope.txtMay = '...';
+			      $scope.txtMen = '...';
+			      $scope.txtNxt = '...';
+			      $scope.txtPrv = '...';
+			      $scope.txtSrtCrt = $scope.txtAlf;
+			      $scope.sort = 'd';
+			      $scope.ctg = '';
+			      $scope.txtTel='';
+			      $scope.txtCor='';
+			      $scope.txtInf='';
+			      $scope.txtSct='';
+			      $scope.txtPlaNam='';
+			      $scope.txtSct='';
+			      $scope.txtSin='';
+			      $scope.uni = false;
+			      $scope.cla = false;
+			      $scope.wat = false;
+			      $scope.crt = false;
+			      $scope.lod = true;
+			      $scope.btc = false;
+			      $scope.img = true;
+			      $scope.ctok='';
+			      $scope.ernw='';
+			      $scope.clt = 'w3-black';
+			      $scope.cblu = '#1A73E8';
+			      $scope.cgre = '#33AA66';
+			      $scope.clo = 'close';
+
+				  $scope.configPages = function() {
+				  		var q = $scope.srch;
+				  		try{
+				  			q = $scope.srch.replace(" ","");
+				  		}catch(e){
+
+				  		}
+				        if($scope.ctg=='' && q=='' ){
+				            $scope.itmsCur = $scope.itms;
+				        }else{
+
+				        	if(q != ''){
+				        		$scope.txtCtgCrt = $scope.ctgs[0].n;
+				        		$scope.ctg = 0;
+				        		$scope.currentPage = 0;
+				        	}
+				            $scope.itmsCur = [];
+				            try{
+				            	$scope.itms.forEach( function(val, ind, arr) {
+
+					                var ax = q==""?true:(val.d.toUpperCase().search(q.toUpperCase() ) > -1  );
+
+					                if( ($scope.ctg=='' || val.c==$scope.ctg) && ax ){
+					                    $scope.itmsCur.push(val);
+					                }
+					            });
+				            }catch(e){
+
+				            }
+				        }
+				        var intRef = 20;
+				        $scope.pages.length = 0;
+				        var ini = $scope.currentPage - 4;
+				        var fin = $scope.currentPage + 5;
+				        if (ini < 1) {
+				          ini = 1;
+				          fin = Math.ceil($scope.itmsCur.length / $scope.pageSize);
+				        } else {
+				            ini = -1;
+				            fin = Math.ceil($scope.itmsCur.length / $scope.pageSize);
+				        }
+				        if (ini < 1) ini = 1;
+				        for (var i = ini; i <= fin; i++) {
+				          $scope.pages.push({
+				            no: i
+				          });
+				        }
+				        if ($scope.currentPage >= $scope.pages.length)
+				          $scope.currentPage = $scope.pages.length;
+				      };
+
+
+
+			      $scope.setPage = function(index) {
+			        $scope.currentPage = index - 1;
+			      };
+
+			      $scope.nxt = function() {
+			        $scope.currentPage = $scope.currentPage + 1;
+			        topScr();
+			      };
+			      $scope.ntr = function() {
+			      	$scope.currentPage = $scope.currentPage - 1;
+			        topScr();
+			      };
+
+
+			      $scope.addCrt = function(e,itm){
+			        e.setAttribute('class','fa fa-check-circle w3-xxlarge pointer');
+			        e.style.color = $scope.cgre;
+				    addItmCrt(itm);
+				    setTimeout(function () {
+				      e.setAttribute('class','fa fa-cart-plus w3-xxlarge pointer');
+				      e.style.color = $scope.cblu;
+				    }, 600);
+
+
+			      }
+
+			      $scope.myCrt = function(){
+			        modCrt.style.display='block';
+			        $scope.itmsCrt = getStg();
+			      }
+			      $scope.delItmCrt = function(itm){
+			        $scope.itmsCrt = delItmCrt(itm);
+			      }
+			      $scope.selSrt = function(sel){
+			        switch(sel) {
+			          case 0:
+			            $scope.txtSrtCrt = $scope.txtAlf;
+			            $scope.sort = 'd';
+			            break;
+			          case 1:
+			            $scope.txtSrtCrt = $scope.txtMyp;
+			            $scope.sort = '-v';
+			            break;
+			          case 2:
+			            $scope.txtSrtCrt = $scope.txtMnp;
+			            $scope.sort = 'v';
+			            break;
+			        }
+			        modSrt.style.display = "none";
+			      }
+			      $scope.selCtg = function(ctg){
+
+			        $scope.txtCtgCrt = ctg.n;
+			        $scope.ctg = ctg.i==0?'':ctg.i;
+			        modCtg.style.display = "none";
+			        $scope.currentPage = 0;
+			        $scope.srch = '';
+			        $scope.configPages();
+			      }
+			      $scope.srchAll = function(){
+			        console.log("mycart: "+$scope.srch);
+
+			      }
+			      $scope.snd = function(){
+
+			        var text = $scope.txtPlaNam+": "+$scope.namc+"\n\n";
+			        var suc = true;
+
+			        $scope.itmsCrt.itms.forEach( function(v, i, ar) {
+
+			        	if( !(!isNaN(v.q) && !isNaN(parseFloat(v.q) ) ) ){
+			        		suc = false;
+			        		return;
+			        	}
+
+			            text += "*"+v.q+" -> "+v.d+" :"+v.k+"\n";
+			        });
+
+			        if(suc){
+			        	setStg({});
+			            $scope.itmsCrt = [];
+			            bdgCrt.style.visibility = "hidden";
+			            modCrt.style.display = "none";
+
+				        window.open(
+				          encodeURI('https://api.whatsapp.com/send?phone='+$scope.txtTel+'&text='+text),
+				          '_blank'
+				        );
+			        }else{
+			        	alert("only numeric values");
+			        }
+
+
+			      }
+			      addItmCrt(null);
+			      var unts = {};
+			      var result = data;
+
+
+			        var ctnMan = document.getElementById("ctnMan");
+			        ctnMan.style.visibility = "visible";
+			        var loader = document.getElementById("loader");
+			        loader.style.visibility = "hidden";
+			        var lg_v = document.getElementById("lg");
+			        var ngc = result.ngc;
+
+
+			        $scope.txtSrt = result.orp;
+			        $scope.txtCtg = result.ctgs;
+			        $scope.txtAlf = result.alf;
+			        $scope.txtMyp = result.myp;
+			        $scope.txtMnp = result.mnp;
+			        $scope.txtBsc = result.bsc;
+			        $scope.txtNxt = result.nxt;
+			      	$scope.txtPrv = result.prv;
+			        $scope.ctok = result.ctok;
+			        $scope.ernw = result.ernw;
+
+			        $scope.txtTel = result.tel2;
+			        $scope.txtCor = result.cor2;
+			        $scope.txtInf = result.dir2;
+
+			        $scope.img = result.img;
+
+			        $scope.uni = !result.uni;
+			        $scope.cla = !result.cla;
+			        $scope.clo = result.clo;
+
+
+			        $scope.wat = result.wha&&result.tel2!='';
+			        $scope.crt = result.crt&&result.tel2!='';
+			        $scope.txtSct = result.sct;
+			        $scope.txtPlaNam = result.nam;
+
+			        $scope.txtSin = result.sin;
+
+			        $scope.txtSct = result.sct;
+			        $scope.txtSrtCrt = $scope.txtAlf;
+
+			        $scope.clt = result.clt;
+			        $scope.ngc = ngc;
+
+
+			        if(result.lg.length>0){
+			          $scope.lg = result.lg;
+			        }else{
+			          lg_v.style.visibility = "hidden";
+			          $scope.lg = "0=="
+			        }
+
+			        result.und.forEach( function(val, ind, arr) {
+			            unts[val.i] = val.n;
+			        });
+
+
+			        $scope.itms = result.itm;
+			        $scope.ctgs = result.ctg;
+			        $scope.txtCtgCrt = $scope.ctgs[0].n;
+
+
+			        $scope.itms.forEach( function(val, ind, arr) {
+			            val.u = unts[val.u];
+
+			        });
+
+
+
+			        var link = document.createElement('link');
+			        link.rel = 'icon';
+			        document.getElementsByTagName('head')[0].appendChild(link);
+			        link.href = 'logo.png';
+			        $scope.currentPage = 1;
+			        $scope.configPages();
+			        topScr();
+					setTimeout(function () {
+				      	var el = document.getElementById('labNeg');
+					   	var divHeight = el.offsetHeight
+					   	var lineHeight = parseInt(el.style.lineHeight);
+					   	var lines = divHeight / lineHeight;
+	    				if( lines < 2){
+	    					el.style.lineHeight = "50px";
+	    				}
+	    				if($scope.ngc.length>25){
+							el.style.fontSize = "16px";
+	    				}
+	    				if($scope.ngc.length>40){
+							el.style.fontSize = "14px";
+	    				}
+	    				el.style.visibility = "visible";
+				    }, 400);
+			    })
+			.filter('startFromGrid', function() {
+			  return function(input, start) {
+			    start = +start;
+			    return input.slice(start);
+			  }
+			});
+			var stgLoc={};
+            function stgChk(){
+                var test = 'test';
+                try {
+                    localStorage.setItem(test, test);
+                    localStorage.removeItem(test);
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            }
+            function getStg(){
+                if( stgChk() ){
+                  var itmsAux = localStorage.getItem("mn_shop_13x");
+                  return itmsAux==null?{}:JSON.parse(itmsAux);
+                }else{
+                  return stgLoc;
+                }
+            }
+            function setStg(itms){
+                if( stgChk() ){
+                  localStorage.setItem("mn_shop_13x", JSON.stringify(itms) );
+                }else{
+                  stgLoc = itms;
+                }
+            }
+			function addItmCrt(itm){
+			    var itmsCrt = getStg();
+			    if(itmsCrt.itms==undefined){
+			        itmsCrt.itms = [];
+			        if(itm!=null){
+			          itm.q = 1;
+			          itmsCrt.itms.push(itm);
+			        }
+			      }else if(itm!=null){
+			          var aux = null;
+			          for(var i=0;i<itmsCrt.itms.length;i++){
+			            if(itmsCrt.itms[i].i==itm.i){
+			                aux=itmsCrt.itms[i];
+			                break;
+			              }
+			          }
+			          if(aux==null){
+			            itm.q = 1;
+			            itmsCrt.itms.push(itm);
+			          }else{
+			            aux.q +=1;
+			          }
+
+			      }
+			    setStg(itmsCrt);
+			    bdgCrt.innerHTML = itmsCrt.itms.length;
+			    bdgCrt.style.visibility = itmsCrt.itms.length==0? "hidden":"visible";
+
+			}
+			function delItmCrt(itm){
+			    var itmsCrt = getStg();
+			    var ind = -1;
+			    for(var i=0;i<itmsCrt.itms.length;i++){
+			      if(itmsCrt.itms[i].i==itm.i){
+			          ind=i;
+			          break;
+			        }
+			    }
+			    if(ind>-1){
+			      itmsCrt.itms.splice(ind, 1);
+			    }
+			    setStg(itmsCrt);
+			    bdgCrt.innerHTML = itmsCrt.itms.length;
+			    bdgCrt.style.visibility = itmsCrt.itms.length==0? "hidden":"visible";
+			    return itmsCrt;
+			}
+			function topScr() {
+			  document.body.scrollTop = 0;
+			  document.documentElement.scrollTop = 0;
+			}
+			function ajIm(el){
+				el.style.marginTop = ((260-el.offsetHeight)/2)+"px";
+			}
+			var data = /*#d4t4#*/ {"itm":[{"c":-300,"d":"VENTA DE CELULAR A ROMI PRIMA","i":"VENTA DE CELULAR A ROMI PRIMA#s?","k":">Sin información","l":"null","p":"$200,000","u":10,"v":200000,"z":100},{"c":1,"d":"PIEZA 102 AÑOS PLUS X 30 COMPRIMIDOS X1","i":"2078\/1","k":"2078\/1","l":"2078%2F1","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA 102 MUJER X30 X1","i":"1989H","k":"1989H","l":"null","p":"$25,500","u":10,"v":25500,"z":200},{"c":1,"d":"PIEZA ACTRON 400 X 20 CAPSULAS X1","i":"1\/7","k":"1\/7","l":"1%2F7","p":"$8,900","u":10,"v":8900,"z":200},{"c":1,"d":"PIEZA ACTRON 600 X 20 CAPSULAS X 1","i":"1-MAR","k":"1-MAR","l":"1-MAR","p":"$14,900","u":10,"v":14900,"z":200},{"c":1,"d":"PIEZA ACTRON GEL X1","i":"8288KH","k":"8288KH","l":"null","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA ACTRON MUJER X 10 X 1","i":"5\/5","k":"5\/5","l":"5%2F5","p":"$5,600","u":10,"v":5600,"z":200},{"c":1,"d":"PIEZA ACTRON PEDIATRICO 2% X1","i":"287388J","k":"287388J","l":"null","p":"$6,400","u":10,"v":6400,"z":200},{"c":1,"d":"PIEZA ACTRON PEDIATRICO 4% X1","i":"IWO28","k":"IWO28","l":"null","p":"$12,900","u":10,"v":12900,"z":200},{"c":1,"d":"PIEZA ACTRON PLUS X 8 CAPSULAS  X 1","i":"1946\/6","k":"1946\/6","l":"1946%2F6","p":"$5,900","u":10,"v":5900,"z":200},{"c":1,"d":"PIEZA AFEITA BIC AMARILLA X24U X1","i":"185\/0","k":"185\/0","l":"185%2F0","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA AFEITA BIC CONFORT 2 X 24U X 1","i":"186\/7","k":"186\/7","l":"186%2F7","p":"$21,900","u":10,"v":21900,"z":200},{"c":1,"d":"PIEZA AFEITA BIC CONFORT 3 X 12U X1","i":"183\/6","k":"183\/6","l":"183%2F6","p":"$17,900","u":10,"v":17900,"z":200},{"c":1,"d":"PIEZA AGAROL GEL CAPS X10 X1","i":"18889K","k":"18889K","l":"null","p":"$7,900","u":10,"v":7900,"z":200},{"c":1,"d":"PIEZA AGUA OXIGENADA X 100ML","i":"188\/1","k":"188\/1","l":"188%2F1","p":"$1,230","u":10,"v":1230,"z":200},{"c":1,"d":"PIEZA ALCOHOL EN GEL 500GR X1","i":"8188N","k":"8188N","l":"null","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA ALCOHOL PURO X 500 ML X1","i":"192\/8","k":"192\/8","l":"192%2F8","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA ALCOHOL PURO X250 ML X1","i":"8177K","k":"8177K","l":"null","p":"$1,290","u":10,"v":1290,"z":200},{"c":1,"d":"PIEZA ALERMUC X 10 COMPRIMIDOS X1","i":"3162\/4","k":"3162\/4","l":"3162%2F4","p":"$4,760","u":10,"v":4760,"z":200},{"c":1,"d":"PIEZA ALGODON DONCELLA X 70 GRS. X1","i":"3127\/3","k":"3127\/3","l":"3127%2F3","p":"$1,390","u":10,"v":1390,"z":200},{"c":1,"d":"PIEZA ALIKAL SABOR X 30 X 1","i":"6-AGO","k":"6-AGO","l":"null","p":"$22,900","u":10,"v":22900,"z":200},{"c":1,"d":"PIEZA ALIKAL TRADICIONALES X 30 X 1","i":"3-SEP","k":"3-SEP","l":"null","p":"$22,900","u":10,"v":22900,"z":200},{"c":1,"d":"PIEZA ALMAXIMO 100MG X 20 COMPRIMIDOS X1","i":"828828","k":"828828","l":"null","p":"$21,390","u":10,"v":21390,"z":200},{"c":1,"d":"PIEZA ALMAXIMO 50MG X20 COMPRIMIDOS X1","i":"9289K","k":"9289K","l":"9289K","p":"$18,900","u":10,"v":18900,"z":200},{"c":1,"d":"PIEZA AMOXICILINA 250 JARABE X 90 ML. X1","i":"134\/8","k":"134\/8","l":"134%2F8","p":"$4,490","u":10,"v":4490,"z":200},{"c":1,"d":"PIEZA AMOXICILINA 500 JARABE X 90 ML. X1","i":"136\/2","k":"136\/2","l":"136%2F2","p":"$4,980","u":10,"v":4980,"z":200},{"c":1,"d":"PIEZA AMOXICILINA 500 X 8 COMPRIMIDOS. X1","i":"135\/5","k":"135\/5","l":"135%2F5","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA ANAFLEX X 16X 1","i":"6-NOV","k":"6-NOV","l":"null","p":"$6,490","u":10,"v":6490,"z":200},{"c":1,"d":"PIEZA ANTI ALERGICO LORATADINA COMPUESTO S\/E X1","i":"1933\/6","k":"1933\/6","l":"1933%2F6","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA ASPIRINA PREVENT X50 X1","i":"KKSL","k":"KKSL","l":"null","p":"$12,900","u":10,"v":12900,"z":200},{"c":1,"d":"PIEZA ASPIRINA V3 NIÑOS X 100 X 1","i":"15\/4","k":"15\/4","l":"15%2F4","p":"$8,290","u":10,"v":8290,"z":200},{"c":1,"d":"PIEZA ASPIRINETA X 98 X1","i":"16\/1","k":"16\/1","l":"16%2F1","p":"$7,900","u":10,"v":7900,"z":200},{"c":1,"d":"PIEZA ASPIRINETAS X 28 X1","i":"376\/4","k":"376\/4","l":"376%2F4","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA ATOMO X 110 GRMS X1","i":"17\/8","k":"17\/8","l":"17%2F8","p":"$14,950","u":10,"v":14950,"z":200},{"c":1,"d":"PIEZA AZITROMICINA TRITAB POLVO PARA PREPARAR X1","i":"828J","k":"828J","l":"null","p":"$11,900","u":10,"v":11900,"z":200},{"c":1,"d":"PIEZA AZITROMICINA X3. X1","i":"1737\/8","k":"1737\/8","l":"1737%2F8","p":"$3,290","u":10,"v":3290,"z":200},{"c":1,"d":"PIEZA AZUFRE DISMAR X 10U. X1","i":"1874\/6","k":"1874\/6","l":"1874%2F6","p":"$3,190","u":10,"v":3190,"z":200},{"c":1,"d":"PIEZA BARBIJOS CAJA X50U","i":"728UK","k":"728UK","l":"null","p":"$6,390","u":10,"v":6390,"z":200},{"c":1,"d":"PIEZA BAYASPIRINA C CALIENTE X24U","i":"8282288","k":"8282288","l":"null","p":"$22,490","u":10,"v":22490,"z":200},{"c":1,"d":"PIEZA BAYASPIRINA FORTE X 20 X 1","i":"22\/2","k":"22\/2","l":"22%2F2","p":"$8,790","u":10,"v":8790,"z":200},{"c":1,"d":"PIEZA BAYASPIRINA X 30 X1","i":"24\/6","k":"24\/6","l":"24%2F6","p":"$8,900","u":10,"v":8900,"z":200},{"c":1,"d":"PIEZA BENGALAS X 4U. X1","i":"2031\/6","k":"2031\/6","l":"2031%2F6","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA BETACORT PLUS X1","i":"989IK","k":"989IK","l":"null","p":"$11,900","u":10,"v":11900,"z":200},{"c":1,"d":"PIEZA BIROMES BIC CRISTAL AZUL X50U X1","i":"9399K","k":"9399K","l":"null","p":"$32,900","u":10,"v":32900,"z":200},{"c":1,"d":"PIEZA BIROMES BIC CRISTAL NEGRO X 50U. X1","i":"1995\/4","k":"1995\/4","l":"1995%2F4","p":"$32,900","u":10,"v":32900,"z":200},{"c":1,"d":"PIEZA BOLSA RECIDUO 10U 45X60","i":"748399","k":"748399","l":"null","p":"$1,490","u":10,"v":1490,"z":200},{"c":1,"d":"PIEZA BOMBILLA MATE ALPACA X1","i":"19407N","k":"19407N","l":"null","p":"$3,490","u":10,"v":3490,"z":200},{"c":1,"d":"PIEZA BROCHES P\/ROPA REFOR X 12U X1","i":"206\/8","k":"206\/8","l":"206%2F8","p":"$1,490","u":10,"v":1490,"z":200},{"c":1,"d":"PIEZA BROMHEXINA JARABE ADULTOS SIN ESTUCHE X1","i":"198L","k":"198L","l":"null","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA BROMHEXINA JARABE PEDIATRICO S\/E X1","i":"8299938","k":"8299938","l":"null","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA BUSCAPINA FEM X 6 X 1","i":"29\/1","k":"29\/1","l":"29%2F1","p":"$5,390","u":10,"v":5390,"z":200},{"c":1,"d":"PIEZA BUSCAPINA N X10. X1","i":"30\/7","k":"30\/7","l":"30%2F7","p":"$8,390","u":10,"v":8390,"z":200},{"c":1,"d":"PIEZA BUSCAPINA PERLAS X 10 X 1","i":"32\/1","k":"32\/1","l":"32%2F1","p":"$7,390","u":10,"v":7390,"z":200},{"c":1,"d":"PIEZA CAFIASPIRINA PLUS X 20 X 1","i":"34\/5","k":"34\/5","l":"34%2F5","p":"$5,790","u":10,"v":5790,"z":200},{"c":1,"d":"PIEZA CAFIASPIRINA X 30 X 1","i":"36\/9","k":"36\/9","l":"36%2F9","p":"$6,790","u":10,"v":6790,"z":200},{"c":1,"d":"PIEZA CARAMELOS GARGAMPROL","i":"40\/67","k":"40\/67","l":"40%2F67","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA CARBON VEGETAL X 10 COMPRIMIDOS  X 1","i":"40\/6","k":"40\/6","l":"40%2F6","p":"$2,900","u":10,"v":2900,"z":200},{"c":1,"d":"PIEZA CEFALEXINA 500 X 8 COMPRIMIDOS. X1","i":"142\/3","k":"142\/3","l":"142%2F3","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA CEFALEXINA JARABE 500 X90ML X1","i":"287IN","k":"287IN","l":"null","p":"$5,690","u":10,"v":5690,"z":200},{"c":1,"d":"PIEZA CEPILLO DENTAL COLGATE 12 + 2 X1","i":"210\/5","k":"210\/5","l":"210%2F5","p":"$16,900","u":10,"v":16900,"z":200},{"c":1,"d":"PIEZA CEPILLO MANGO PLASTICO X1","i":"9288J","k":"9288J","l":"null","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA CHICLE LAXANTE KRITEL X 6 X1","i":"2053\/8","k":"2053\/8","l":"2053%2F8","p":"$2,880","u":10,"v":2880,"z":200},{"c":1,"d":"PIEZA CICATRICURE ANTI EDAD X1","i":"198OK","k":"198OK","l":"null","p":"$28,900","u":10,"v":28900,"z":200},{"c":1,"d":"PIEZA CINCERUM GOTAS X1","i":"29Q88K","k":"29Q88K","l":"null","p":"$6,900","u":10,"v":6900,"z":200},{"c":1,"d":"PIEZA CINTA EMBALAJE X 40 METROS X 1","i":"3231\/3","k":"3231\/3","l":"3231%2F3","p":"$1,490","u":10,"v":1490,"z":200},{"c":1,"d":"PIEZA COLTIX COLIRIO OJOS X1","i":"288J","k":"288J","l":"null","p":"$13,490","u":10,"v":13490,"z":200},{"c":1,"d":"PIEZA CONTRACTIL HEMORROIDAL X30 X1","i":"9299K","k":"9299K","l":"null","p":"$14,570","u":10,"v":14570,"z":200},{"c":1,"d":"PIEZA CONTRACTIL X30 X1","i":"8289","k":"8289","l":"null","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA CREMA DENTAL COLGATE ORIGINAL X70 X1","i":"USIWKK","k":"USIWKK","l":"null","p":"$2,100","u":10,"v":2100,"z":200},{"c":1,"d":"PIEZA CREMA DENTAL KOLYNO X 70GRM X 1","i":"3228\/3","k":"3228\/3","l":"3228%2F3","p":"$2,100","u":10,"v":2100,"z":200},{"c":1,"d":"PIEZA CREMA MIKLOGEN KLONAL X1","i":"8288JH","k":"8288JH","l":"null","p":"$3,990","u":10,"v":3990,"z":200},{"c":1,"d":"PIEZA CREMA OXIDANTE 20VOLUMEN X 1","i":"216\/7","k":"216\/7","l":"216%2F7","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA CREMA OXIDANTE 30 VOLUMEN X 1","i":"217\/4","k":"217\/4","l":"217%2F4","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA CREMA VITACORTIL ANTIMICOTICA X1","i":"0039K","k":"0039K","l":"null","p":"$7,190","u":10,"v":7190,"z":200},{"c":1,"d":"PIEZA CUCARACHISIDA RAID AEROSOL X 1","i":"2036\/1","k":"2036\/1","l":"2036%2F1","p":"$4,790","u":10,"v":4790,"z":200},{"c":1,"d":"PIEZA CUCARACHISIDA SELTON AEROSOL X 1","i":"3193\/8","k":"3193\/8","l":"3193%2F8","p":"$4,490","u":10,"v":4490,"z":200},{"c":1,"d":"PIEZA CURITAS APOSITOS SYRITA 20X10U  X 1","i":"KQKWK","k":"KQKWK","l":"null","p":"$14,900","u":10,"v":14900,"z":200},{"c":1,"d":"PIEZA CURITAS X24 CAJAS (PACK) X1","i":"9279H","k":"9279H","l":"null","p":"$18,900","u":10,"v":18900,"z":200},{"c":1,"d":"PIEZA DESINFECTANTE LYSOFORM AEROSOL X 1","i":"1974\/9","k":"1974\/9","l":"1974%2F9","p":"$3,790","u":10,"v":3790,"z":200},{"c":1,"d":"PIEZA DESODORANTE AEROSOL DOVE ORIGINAL X1","i":"83902","k":"83902","l":"null","p":"$3,290","u":10,"v":3290,"z":200},{"c":1,"d":"PIEZA DESODORANTE AXE AEROSOL X 1","i":"227\/3","k":"227\/3","l":"227%2F3","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA DESODORANTE DE AMBIENTE GLADE AEROSOL X1","i":"0289K","k":"0289K","l":"0289K","p":"$3,490","u":10,"v":3490,"z":200},{"c":1,"d":"PIEZA DESODORANTE REXONA MEN AEROSOL X 1","i":"1976\/3","k":"1976\/3","l":"1976%2F3","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA DESODORANTE REXONA ODORONO AEROSOL X 1","i":"3235\/1","k":"3235\/1","l":"3235%2F1","p":"$3,900","u":10,"v":3900,"z":200},{"c":1,"d":"PIEZA DESODORANTE REXONA ODORONO CREMA X 1","i":"228\/0","k":"228\/0","l":"228%2F0","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA DESODORANTE REXONA WOMAN AEROSOL X 1","i":"1970\/1","k":"1970\/1","l":"1970%2F1","p":"$3,290","u":10,"v":3290,"z":200},{"c":1,"d":"PIEZA DESODORANTE VERITAS CREMA X 60 GRM X 1","i":"3168\/6","k":"3168\/6","l":"3168%2F6","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA DESODORANTES AMBIENTE POETT\/ GLADE X1","i":"226\/6","k":"226\/6","l":"226%2F6","p":"$3,190","u":10,"v":3190,"z":200},{"c":1,"d":"PIEZA DICLOFENAC 100MG X15 CAPSULAS. NEXO X1","i":"143\/0","k":"143\/0","l":"143%2F0","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA DICLOFENAC 75 MG X 15 FABOP X1.","i":"145\/4","k":"145\/4","l":"145%2F4","p":"$2,900","u":10,"v":2900,"z":200},{"c":1,"d":"PIEZA DICLOFENAC 75MG X90 FABOP X1","i":"2989JGJ","k":"2989JGJ","l":"null","p":"$5,990","u":10,"v":5990,"z":200},{"c":1,"d":"PIEZA DICLOFENAC GEL CON ESTUCHE KL. X1","i":"147\/8","k":"147\/8","l":"147%2F8","p":"$3,490","u":10,"v":3490,"z":200},{"c":1,"d":"PIEZA DICLOFENAC RELAX X 10 COMPRIMIDOS X1","i":"149\/2","k":"149\/2","l":"149%2F2","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA DIPIRONA JARABE 250MG X1","i":"92890K","k":"92890K","l":"null","p":"$3,690","u":10,"v":3690,"z":200},{"c":1,"d":"PIEZA DIPIRONA X 100 ML SIN ESTUCHE","i":"152\/2","k":"152\/2","l":"152%2F2","p":"$3,790","u":10,"v":3790,"z":200},{"c":1,"d":"PIEZA DORIXINA X10 COMPRIMIDOS X1","i":"8398","k":"8398","l":"null","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA ECOLE PEGAMENTO X 6 UNIDADES X 1","i":"1850\/0","k":"1850\/0","l":"1850%2F0","p":"$25,690","u":10,"v":25690,"z":200},{"c":1,"d":"PIEZA ENALAPRIL 10 MG X10 COMPRIMIDOS, FABO X1","i":"154\/6","k":"154\/6","l":"154%2F6","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA ENALAPRIL 20 MG X 10 COMPRIMIDOS LAZA X1","i":"155\/3","k":"155\/3","l":"155%2F3","p":"$2,900","u":10,"v":2900,"z":200},{"c":1,"d":"PIEZA ENCENDEDOR CANDELA X 25 UNIDADES X 1","i":"3215\/3","k":"3215\/3","l":"3215%2F3","p":"$12,390","u":10,"v":12390,"z":200},{"c":1,"d":"PIEZA ENCENDEDOR MAXI BIC X 12 X 1","i":"3181\/5","k":"3181\/5","l":"3181%2F5","p":"$16,390","u":10,"v":16390,"z":200},{"c":1,"d":"PIEZA ESCARBADIENTE X 12 UNIDADES X 1","i":"2114\/2","k":"2114\/2","l":"2114%2F2","p":"$13,260","u":10,"v":13260,"z":200},{"c":1,"d":"PIEZA ESCOBILLA BAÑO CON DEPOSITO X1","i":"3354\/5","k":"3354\/5","l":"null","p":"$4,490","u":10,"v":4490,"z":200},{"c":1,"d":"PIEZA ESCURRIDOR DOBLE GOMA RAYITA X1","i":"298J","k":"298J","l":"298J","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA ESPIRAL MATIRIS 50X4U X1","i":"298OM","k":"298OM","l":"null","p":"$34,900","u":10,"v":34900,"z":200},{"c":1,"d":"PIEZA ESPIRAL RAID X 12 X4U X","i":"3147\/1","k":"3147\/1","l":"3147%2F1","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA ESPONJA DE ACERO DORADA X13 GR X1","i":"1784\/2","k":"1784\/2","l":"1784%2F2","p":"$790","u":10,"v":790,"z":200},{"c":1,"d":"PIEZA ESPONJA DE ACERO PLATEADA","i":"1783\/5","k":"1783\/5","l":"1783%2F5","p":"$790","u":10,"v":790,"z":200},{"c":1,"d":"PIEZA ESPONJA DE FIBRA MARCA BATUQUE X1","i":"18999","k":"18999","l":"null","p":"$550","u":10,"v":550,"z":200},{"c":1,"d":"PIEZA FANGAN KETOCONAZOL 400MG X1","i":"9289JV","k":"9289JV","l":"null","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA FLEXIPLEN CAPSULAS BLANDAS X15 RAPIDA ACCION  X1","i":"888EHH","k":"888EHH","l":"null","p":"$7,990","u":10,"v":7990,"z":200},{"c":1,"d":"PIEZA FLUCONAZOL X2. X1","i":"1738\/5","k":"1738\/5","l":"1738%2F5","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA FOSFORO RODEO 10 X 40U X1","i":"2113\/5","k":"2113\/5","l":"2113%2F5","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA FRASCO ESTERIL X1","i":"246\/4","k":"246\/4","l":"246%2F4","p":"$1,290","u":10,"v":1290,"z":200},{"c":1,"d":"PIEZA FUYI VAPE X 24U X1","i":"82988","k":"82988","l":"null","p":"$4,690","u":10,"v":4690,"z":200},{"c":1,"d":"PIEZA GASA 10 X 10. 10 CAJITA X 1","i":"248\/8","k":"248\/8","l":"248%2F8","p":"$4,390","u":10,"v":4390,"z":200},{"c":1,"d":"PIEZA GEL FIJADOR ALGABO 150 GRS X1","i":"2072\/9","k":"2072\/9","l":"2072%2F9","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA GEL INTIMO LUBRICANTE FALIC X1","i":"83999JKFK","k":"83999JKFK","l":"null","p":"$3,990","u":10,"v":3990,"z":200},{"c":1,"d":"PIEZA GENIOL PLUS RAPIDA ACCION X12 CAPSULAS X1","i":"89292JJ","k":"89292JJ","l":"null","p":"$6,790","u":10,"v":6790,"z":200},{"c":1,"d":"PIEZA GENIOL PLUS X12 X1","i":"92899K","k":"92899K","l":"null","p":"$4,900","u":10,"v":4900,"z":200},{"c":1,"d":"PIEZA GILLETTE MACH 3 MAQUINA X1","i":"157\/7","k":"157\/7","l":"null","p":"$5,890","u":10,"v":5890,"z":200},{"c":1,"d":"PIEZA GLOBOS CANDELA X50U X1","i":"929800","k":"929800","l":"null","p":"$3,230","u":10,"v":3230,"z":200},{"c":1,"d":"PIEZA GOTITA EN GEL X 6U. X1","i":"256\/3","k":"256\/3","l":"256%2F3","p":"$15,690","u":10,"v":15690,"z":200},{"c":1,"d":"PIEZA GRIPABEN CARAMELOS X 9 X1","i":"918K","k":"918K","l":"null","p":"$7,900","u":10,"v":7900,"z":200},{"c":1,"d":"PIEZA GRIPABEN PLUS X20 COMPRIMIDOS X1","i":"1935\/0","k":"1935\/0","l":"1935%2F0","p":"$7,190","u":10,"v":7190,"z":200},{"c":1,"d":"PIEZA GRIPABEN TE SOBRES X5U X1","i":"2989J","k":"2989J","l":"null","p":"$8,690","u":10,"v":8690,"z":200},{"c":1,"d":"PIEZA GUANTES DE EXAMEN LATEX X 100 U X1","i":"258\/7","k":"258\/7","l":"258%2F7","p":"$13,990","u":10,"v":13990,"z":200},{"c":1,"d":"PIEZA GUANTES DE LIMPIEZA EL PAR T:G X1","i":"259\/4","k":"259\/4","l":"259%2F4","p":"$1,790","u":10,"v":1790,"z":200},{"c":1,"d":"PIEZA HEPATALGINA X 20 COMPRIMIDOS X1","i":"2060\/6","k":"2060\/6","l":"2060%2F6","p":"$7,990","u":10,"v":7990,"z":200},{"c":1,"d":"PIEZA HEPATALGINA X 45 ML X1","i":"57\/4","k":"57\/4","l":"57%2F4","p":"$5,390","u":10,"v":5390,"z":200},{"c":1,"d":"PIEZA HISOPOS ALGABO X125U X1","i":"3335\/4","k":"3335\/4","l":"3335%2F4","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA HOJAS DE AFEITAR X 5U X1","i":"3172\/3","k":"3172\/3","l":"3172%2F3","p":"$2,790","u":10,"v":2790,"z":200},{"c":1,"d":"PIEZA IBUEVANOL FORTE X 20 CAPSULAS X1","i":"1983\/1","k":"1983\/1","l":"1983%2F1","p":"$7,690","u":10,"v":7690,"z":200},{"c":1,"d":"PIEZA IBUEVANOL MAX X 20 CAPSULAS X1","i":"2056\/9","k":"2056\/9","l":"2056%2F9","p":"$8,690","u":10,"v":8690,"z":200},{"c":1,"d":"PIEZA IBUEVANOL PLUS X 20 R.A X1","i":"63\/5","k":"63\/5","l":"63%2F5","p":"$7,690","u":10,"v":7690,"z":200},{"c":1,"d":"PIEZA IBUEVANOL RAP ACCION X 20 X1","i":"64\/2","k":"64\/2","l":"64%2F2","p":"$7,990","u":10,"v":7990,"z":200},{"c":1,"d":"PIEZA IBUPIRAC 400 X24 RAPIDA ACCION X1","i":"2888KG","k":"2888KG","l":"null","p":"$5,890","u":10,"v":5890,"z":200},{"c":1,"d":"PIEZA IBUPROFENO 2% SIN ESTUCHE X1","i":"81888","k":"81888","l":"81888","p":"$2,790","u":10,"v":2790,"z":200},{"c":1,"d":"PIEZA IBUPROFENO 400 X10 FABOP X1.","i":"159\/1","k":"159\/1","l":"159%2F1","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA IBUPROFENO 600 X10 FABOP X1","i":"160\/7","k":"160\/7","l":"160%2F7","p":"$2,590","u":10,"v":2590,"z":200},{"c":1,"d":"PIEZA IBUPROFENO JAR 4% SIN ESTUCHE","i":"2010\/1","k":"2010\/1","l":"2010%2F1","p":"$2,890","u":10,"v":2890,"z":200},{"c":1,"d":"PIEZA INSECTICIDA FUYI X1","i":"263\/1","k":"263\/1","l":"263%2F1","p":"$3,990","u":10,"v":3990,"z":200},{"c":1,"d":"PIEZA INSECTICIDA RAID SIN OLOR AEROSOL X1","i":"8278JL","k":"8278JL","l":"null","p":"$5,430","u":10,"v":5430,"z":200},{"c":1,"d":"PIEZA INSECTICIDA RAID SIN OLOR AERSOL X1","i":"2004\/0","k":"2004\/0","l":"2004%2F0","p":"$5,900","u":10,"v":5900,"z":200},{"c":1,"d":"PIEZA IODO POVIDONA SOLUCION X60ML X1","i":"928K","k":"928K","l":"null","p":"$5,790","u":10,"v":5790,"z":200},{"c":1,"d":"PIEZA JABON GUAIRA BLANCO X150GR X2 X1","i":"187K","k":"187K","l":"null","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA JABON TOCADOR REXONA X 125 GR X 1","i":"272\/3","k":"272\/3","l":"272%2F3","p":"$870","u":10,"v":870,"z":200},{"c":1,"d":"PIEZA JABON VERDE ASTRO X1","i":"2989KG","k":"2989KG","l":"null","p":"$740","u":10,"v":740,"z":200},{"c":1,"d":"PIEZA JARABE DIFENHIDRAMINA X 120ML X1","i":"2989KKK","k":"2989KKK","l":"null","p":"$5,900","u":10,"v":5900,"z":200},{"c":1,"d":"PIEZA KELAT MAGNESIO 30 COMPRIMIDOS X1","i":"297J","k":"297J","l":"null","p":"$20,700","u":10,"v":20700,"z":200},{"c":1,"d":"PIEZA KETEROLAC 20 MGS X 10 MICROSUL X1","i":"1992\/3","k":"1992\/3","l":"1992%2F3","p":"$2,980","u":10,"v":2980,"z":200},{"c":1,"d":"PIEZA KIPERGRIP ANTIGRIPAL X8 X1","i":"4887J","k":"4887J","l":"null","p":"$2,790","u":10,"v":2790,"z":200},{"c":1,"d":"PIEZA LA GOTITA X 6U X1","i":"7999","k":"7999","l":"null","p":"$15,900","u":10,"v":15900,"z":200},{"c":1,"d":"PIEZA LANA DE ACERO MARCA VIRULANA X1","i":"8398FF","k":"8398FF","l":"null","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA LECHE LA LECHERA X800GR X1","i":"8289IJ","k":"8289IJ","l":"null","p":"$8,900","u":10,"v":8900,"z":200},{"c":1,"d":"PIEZA LOPERAMIDA X1","i":"839IN","k":"839IN","l":"null","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA LOSARTAN 50MG X 10 COMPRIMIDOS X1","i":"9288K","k":"9288K","l":"null","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA MAMADERA ECONOMICA X 250 ML X1","i":"2023\/1","k":"2023\/1","l":"2023%2F1","p":"$1,690","u":10,"v":1690,"z":200},{"c":1,"d":"PIEZA MAMADERA TOMA SOLITO X 200 ML X1","i":"2022\/4","k":"2022\/4","l":"2022%2F4","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA MANTECA DE CACAO PIEL DE BEBE X1","i":"281\/5","k":"281\/5","l":"281%2F5","p":"$1,570","u":10,"v":1570,"z":200},{"c":1,"d":"PIEZA MEJORAL NIÑOS X20 U. X1","i":"75\/8","k":"75\/8","l":"75%2F8","p":"$7,900","u":10,"v":7900,"z":200},{"c":1,"d":"PIEZA MENTOVICK VERDE X1","i":"9389K","k":"9389K","l":"9389K","p":"$4,900","u":10,"v":4900,"z":200},{"c":1,"d":"PIEZA METOTREXATO 15MG X1","i":"2888K","k":"2888K","l":"null","p":"$27,900","u":10,"v":27900,"z":200},{"c":1,"d":"PIEZA MIGRAL COMPUESTO X 10 X1","i":"78\/9","k":"78\/9","l":"78%2F9","p":"$7,490","u":10,"v":7490,"z":200},{"c":1,"d":"PIEZA MILANTA X 8 FRUTAL X 1","i":"82\/6","k":"82\/6","l":"82%2F6","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA MUELITA TRADICIONAL GOTAS X1","i":"3233\/7","k":"3233\/7","l":"3233%2F7","p":"$5,690","u":10,"v":5690,"z":200},{"c":1,"d":"PIEZA NAIPES ECONOMICO X 50U X1","i":"3260\/3","k":"3260\/3","l":"3260%2F3","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA NAPROXENO 250MG X1","i":"8288KK","k":"8288KK","l":"null","p":"$9,800","u":10,"v":9800,"z":200},{"c":1,"d":"PIEZA NEXT TE SOBRES X1","i":"29899J","k":"29899J","l":"null","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA NICOTINELL NICOTINA 2MG X1","i":"8188K","k":"8188K","l":"null","p":"$22,500","u":10,"v":22500,"z":200},{"c":1,"d":"PIEZA NIVEA LATA 60GR X1","i":"838K","k":"838K","l":"838K","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA NORGESTREL MAX DIA DESPUES X1","i":"19829","k":"19829","l":"null","p":"$4,490","u":10,"v":4490,"z":200},{"c":1,"d":"PIEZA NORGESTREL PLUS ANTICONCEPTIVO X21. X1","i":"83\/3","k":"83\/3","l":"83%2F3","p":"$7,990","u":10,"v":7990,"z":200},{"c":1,"d":"PIEZA NOVALGINA JARABE 200ML X1","i":"3988I","k":"3988I","l":"null","p":"$15,390","u":10,"v":15390,"z":200},{"c":1,"d":"PIEZA NOVALGINA X 10 X1.","i":"84\/0","k":"84\/0","l":"84%2F0","p":"$5,580","u":10,"v":5580,"z":200},{"c":1,"d":"PIEZA OFERTA ACTRON 400 X30 COMPRIMIDOS X1","i":"8289OK","k":"8289OK","l":"null","p":"$8,900","u":10,"v":8900,"z":200},{"c":1,"d":"PIEZA OFERTA ACTRON 600 X30 COMPRIMIDOS X1","i":"2999PK","k":"2999PK","l":"null","p":"$19,980","u":10,"v":19980,"z":200},{"c":1,"d":"PIEZA OMEPRAZOL 20 MG X1","i":"1723\/1","k":"1723\/1","l":"1723%2F1","p":"$3,490","u":10,"v":3490,"z":200},{"c":1,"d":"PIEZA PALATROBIL GOTAS X 45 ML X1","i":"2084\/2","k":"2084\/2","l":"2084%2F2","p":"$4,590","u":10,"v":4590,"z":200},{"c":1,"d":"PIEZA PALATROBIL TE HIERBAS X25S X1","i":"928E9J","k":"928E9J","l":"null","p":"$5,900","u":10,"v":5900,"z":200},{"c":1,"d":"PIEZA PARACETAMOL 500 X 10 COMPRIMIDOS X1","i":"3218\/4","k":"3218\/4","l":"3218%2F4","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA PARACETAMOL GENERICO 1MG X1","i":"3977K","k":"3977K","l":"null","p":"$2,290","u":10,"v":2290,"z":200},{"c":1,"d":"PIEZA PARACETAMOL GOTAS SIN ESTUCHE X1","i":"18818","k":"18818","l":"null","p":"$2,490","u":10,"v":2490,"z":200},{"c":1,"d":"PIEZA PARACETAMOL SOBRES VENT3 X1","i":"8278E","k":"8278E","l":"null","p":"$1,890","u":10,"v":1890,"z":200},{"c":1,"d":"PIEZA PARACETAMOL TE ROLFITA X 25 SOBRES X1","i":"0288JJ","k":"0288JJ","l":"null","p":"$4,890","u":10,"v":4890,"z":200},{"c":1,"d":"PIEZA PAÑUELOS X 6 UNIDADES X 1","i":"1750\/7","k":"1750\/7","l":"1750%2F7","p":"$2,290","u":10,"v":2290,"z":200},{"c":1,"d":"PIEZA PILAS DURACELL AA 2X1","i":"9289J","k":"9289J","l":"9289J","p":"$3,390","u":10,"v":3390,"z":200},{"c":1,"d":"PIEZA PILAS DURACELL AAA 2X1","i":"8288K","k":"8288K","l":"null","p":"$3,390","u":10,"v":3390,"z":200},{"c":1,"d":"PIEZA PILAS EVEREADY AA X4U X1","i":"92020","k":"92020","l":"null","p":"$2,890","u":10,"v":2890,"z":200},{"c":1,"d":"PIEZA PILAS PANASONIC AAA X40 UNIDADES X1","i":"2988K","k":"2988K","l":"null","p":"$26,900","u":10,"v":26900,"z":200},{"c":1,"d":"PIEZA PILAS PANASONIC AAA X4U X1","i":"175J","k":"175J","l":"null","p":"$3,120","u":10,"v":3120,"z":200},{"c":1,"d":"PIEZA POMADA CALSADO MACAO NEGRO X 1","i":"314\/6","k":"314\/6","l":"314%2F6","p":"$2,360","u":10,"v":2360,"z":200},{"c":1,"d":"PIEZA POMADA CALSADO WASH MARRON X 1","i":"3159\/4","k":"3159\/4","l":"3159%2F4","p":"$3,330","u":10,"v":3330,"z":200},{"c":1,"d":"PIEZA POMADA CALSADO WASH NEGRO X 1","i":"315\/3","k":"315\/3","l":"315%2F3","p":"$3,690","u":10,"v":3690,"z":200},{"c":1,"d":"PIEZA POMADA LIQUIDA WASHINGTON MARRON X1","i":"999RRR","k":"999RRR","l":"null","p":"$4,130","u":10,"v":4130,"z":200},{"c":1,"d":"PIEZA POMADA LIQUIDA WASHINGTON NEGRO X1","i":"82888","k":"82888","l":"null","p":"$4,150","u":10,"v":4150,"z":200},{"c":1,"d":"PIEZA PRESERVATIVOS PRIME 24 X 3 UNIDAD X1","i":"92889K","k":"92889K","l":"null","p":"$74,900","u":10,"v":74900,"z":200},{"c":1,"d":"PIEZA PRESERVATIVOS TULIPAN X 16 X3U X1","i":"1986\/2","k":"1986\/2","l":"1986%2F2","p":"$34,900","u":10,"v":34900,"z":200},{"c":1,"d":"PIEZA PROTECTOR SOLAR DERMAGLOS 50FPS X50ML X1","i":"8278K","k":"8278K","l":"null","p":"$8,490","u":10,"v":8490,"z":200},{"c":1,"d":"PIEZA PROTECTOR SOLAR ZUOMO X200ML X1","i":"2989","k":"2989","l":"null","p":"$34,000","u":10,"v":34000,"z":200},{"c":1,"d":"PIEZA PULMOSAN ADULTO JARABE 120ML X1","i":"9177JJ","k":"9177JJ","l":"null","p":"$8,990","u":10,"v":8990,"z":200},{"c":1,"d":"PIEZA PULMOSAN PEDIATRICO JARABE 120ML X1","i":"IE999","k":"IE999","l":"null","p":"$8,990","u":10,"v":8990,"z":200},{"c":1,"d":"PIEZA QUITA ESMALTE ALGABO X 100MO X1","i":"3329\/3","k":"3329\/3","l":"null","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA QUITA ESMALTE ECONOMICO ALGABO X 50ML X 1","i":"298\/3","k":"298\/3","l":"298%2F3","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA QURA PLUS X20 X1","i":"94\/9","k":"94\/9","l":"94%2F9","p":"$9,890","u":10,"v":9890,"z":200},{"c":1,"d":"PIEZA REFENAX GOTAS NASALES X1","i":"3246\/7","k":"3246\/7","l":"3246%2F7","p":"$2,990","u":10,"v":2990,"z":200},{"c":1,"d":"PIEZA REFENAX JARABE X 120ML X1","i":"3245\/0","k":"3245\/0","l":"3245%2F0","p":"$1,990","u":10,"v":1990,"z":200},{"c":1,"d":"PIEZA REFRIANEX COMPUESTO X20 COMPRIMIDOS X1","i":"2014\/9","k":"2014\/9","l":"2014%2F9","p":"$9,890","u":10,"v":9890,"z":200},{"c":1,"d":"PIEZA RENNIE MASTICABLES X12 X1","i":"19839K","k":"19839K","l":"null","p":"$4,790","u":10,"v":4790,"z":200},{"c":1,"d":"PIEZA REPELENTE AKTIOL AEROSOL X1","i":"298JH","k":"298JH","l":"null","p":"$5,900","u":10,"v":5900,"z":200},{"c":1,"d":"PIEZA REPELENTE OFF AEROSOL X 165 GS X1","i":"3238\/2","k":"3238\/2","l":"3238%2F2","p":"$7,390","u":10,"v":7390,"z":200},{"c":1,"d":"PIEZA REPELENTE OFF CREMA 60GR X1","i":"8288J","k":"8288J","l":"null","p":"$3,890","u":10,"v":3890,"z":200},{"c":1,"d":"PIEZA REPELENTE VAIS CREMA X200ML X1","i":"8198J","k":"8198J","l":"null","p":"$4,890","u":10,"v":4890,"z":200},{"c":1,"d":"PIEZA REPELENTE VAIS KIDS SPRAY","i":"1988K","k":"1988K","l":"null","p":"$5,890","u":10,"v":5890,"z":200},{"c":1,"d":"PIEZA REPUESTO GILLETTE MACH 3 X2 X1","i":"202\/0","k":"202\/0","l":"202%2F0","p":"$7,390","u":10,"v":7390,"z":200},{"c":1,"d":"PIEZA SALBUTAMOL SALBUTRAL X1","i":"298K","k":"298K","l":"null","p":"$16,540","u":10,"v":16540,"z":200},{"c":1,"d":"PIEZA SALBUTRAL SALBUTAMOL 100 MCG X1","i":"398K","k":"398K","l":"null","p":"$14,900","u":10,"v":14900,"z":200},{"c":1,"d":"PIEZA SEDAL ACONDICIONADOR X 24 SOBRE X1","i":"2110\/4","k":"2110\/4","l":"2110%2F4","p":"$6,490","u":10,"v":6490,"z":200},{"c":1,"d":"PIEZA SEDAL SHAMPOO X 24 SOBRES X1","i":"345\/0","k":"345\/0","l":"345%2F0","p":"$6,490","u":10,"v":6490,"z":200},{"c":1,"d":"PIEZA SERTAL COMPUESTO X 10. X1","i":"97\/0","k":"97\/0","l":"97%2F0","p":"$7,690","u":10,"v":7690,"z":200},{"c":1,"d":"PIEZA SERTAL PERLAS X 10. X1","i":"98\/7","k":"98\/7","l":"98%2F7","p":"$7,390","u":10,"v":7390,"z":200},{"c":1,"d":"PIEZA TABLETA TAFIROL 1GR X 8. X1","i":"1875\/3","k":"1875\/3","l":"1875%2F3","p":"$3,190","u":10,"v":3190,"z":200},{"c":1,"d":"PIEZA TABLETA TAFIROL 500 X 10. X1","i":"1735\/4","k":"1735\/4","l":"1735%2F4","p":"$2,900","u":10,"v":2900,"z":200},{"c":1,"d":"PIEZA TABLETA TAFIROL FORTE X30. X1","i":"1771\/2","k":"1771\/2","l":"1771%2F2","p":"$12,390","u":10,"v":12390,"z":200},{"c":1,"d":"PIEZA TAFIROL DUO X10 COMPRIMIDOS X1","i":"Q676","k":"Q676","l":"null","p":"$3,060","u":10,"v":3060,"z":200},{"c":1,"d":"PIEZA TAFIROL FLEX 10U","i":"3351\/4","k":"3351\/4","l":"3351%2F4","p":"$2,590","u":10,"v":2590,"z":200},{"c":1,"d":"PIEZA TAFIROL JARABE X120ML X1","i":"9289KJ","k":"9289KJ","l":"null","p":"$17,900","u":10,"v":17900,"z":200},{"c":1,"d":"PIEZA TAFIROL MIGRA X10U","i":"3286\/3","k":"3286\/3","l":"3286%2F3","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA TAFIROL PLUS X 16 CAPSULAS. X1","i":"1998\/5","k":"1998\/5","l":"1998%2F5","p":"$5,590","u":10,"v":5590,"z":200},{"c":1,"d":"PIEZA TAFIROLITO 80MG X20 COMPRIMIDOS X1","i":"3148\/8","k":"3148\/8","l":"3148%2F8","p":"$7,900","u":10,"v":7900,"z":200},{"c":1,"d":"PIEZA TALCO EFICIENT REXONA X 100 GR X1","i":"1864\/7","k":"1864\/7","l":"1864%2F7","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA TALCO PARA PIES ALGABO X100GR X1","i":"JDJDN","k":"JDJDN","l":"null","p":"$2,190","u":10,"v":2190,"z":200},{"c":1,"d":"PIEZA TELA ADHESIVA MEDIANA X1","i":"7199","k":"7199","l":"null","p":"$1,390","u":10,"v":1390,"z":200},{"c":1,"d":"PIEZA TES DE EMBARAZO DEFINE X1","i":"181\/2","k":"181\/2","l":"181%2F2","p":"$2,390","u":10,"v":2390,"z":200},{"c":1,"d":"PIEZA TETINA SILICONA X 10 X1","i":"354\/2","k":"354\/2","l":"354%2F2","p":"$2,790","u":10,"v":2790,"z":200},{"c":1,"d":"PIEZA TINTURA 317 KIT COLOR X1","i":"355\/9","k":"355\/9","l":"355%2F9","p":"$4,490","u":10,"v":4490,"z":200},{"c":1,"d":"PIEZA TINTURA COR INTENSA X1","i":"288K","k":"288K","l":"null","p":"$6,790","u":10,"v":6790,"z":200},{"c":1,"d":"PIEZA TOALLITAS HUMEDAS IDEAL X 50U X1","i":"3125\/9","k":"3125\/9","l":"3125%2F9","p":"$2,690","u":10,"v":2690,"z":200},{"c":1,"d":"PIEZA TOSTOP ADULTO JARABE X1","i":"116\/4","k":"116\/4","l":"116%2F4","p":"$7,490","u":10,"v":7490,"z":200},{"c":1,"d":"PIEZA TOSTOP NIÑO JARABE X1.","i":"121\/8","k":"121\/8","l":"121%2F8","p":"$7,490","u":10,"v":7490,"z":200},{"c":1,"d":"PIEZA TRAPO DE PISO GRIS ALGODON N X 1","i":"365\/8","k":"365\/8","l":"365%2F8","p":"$1,390","u":10,"v":1390,"z":200},{"c":1,"d":"PIEZA UVASAL X 30 NARANJA. X1","i":"123\/2","k":"123\/2","l":"123%2F2","p":"$18,990","u":10,"v":18990,"z":200},{"c":1,"d":"PIEZA UVASAL X 30 TRADICIONAL. X1","i":"124\/9","k":"124\/9","l":"124%2F9","p":"$18,990","u":10,"v":18990,"z":200},{"c":1,"d":"PIEZA VELAS CORTAS 1 X4U X1","i":"2977K","k":"2977K","l":"null","p":"$990","u":10,"v":990,"z":200},{"c":1,"d":"PIEZA VELAS LARGAS IRIS X 4U X1","i":"1861\/6","k":"1861\/6","l":"1861%2F6","p":"$1,290","u":10,"v":1290,"z":200},{"c":1,"d":"PIEZA VICK VAPORU LATA X 12 GR. X1","i":"125\/6","k":"125\/6","l":"125%2F6","p":"$4,190","u":10,"v":4190,"z":200},{"c":1,"d":"PIEZA VICK VAPORUB POTE X 50GR X1","i":"719HB","k":"719HB","l":"null","p":"$3,950","u":10,"v":3950,"z":200},{"c":1,"d":"PIEZA VICK VITAP COMUN SOBRES X1","i":"128\/7","k":"128\/7","l":"128%2F7","p":"$2,890","u":10,"v":2890,"z":200}],"ctg":[{"i":0,"n":"Todos"},{"i":1,"n":"ANALGESICOS"},{"i":-300,"n":"Servicios"}],"und":[{"i":10,"n":"_"}],"ngc":"GP DISTRIBUCIONES","tel2":"+5493757527231","cor2":"","dir2":"ALIAS PARA TRANSFERENCIAS:\n(ACTRON400)\nGUSTAVO PEREIRA EMANUEL \n    ","alf":"Alfabeto","myp":"Mayor Precio","mnp":"Menor Precio","ctgs":"Categoría","orp":"Ordenar Por","bsc":"Buscar","crt":true,"nam":"Nombre","sct":"Comprar Ahora","ernw":"Error al conectarse al servidor, compruebe su conexión a internet e intente nuevamente.","img":true,"uni":false,"cla":true,"wha":true,"clo":"Cerrar","nxt":"Siguiente","prv":"Anterior","sin":"Sin información","clt":"w3-black","tmp":1754404283080,"lg":""} /*#d4t4#*/;
+		</script>
+    </body>
+</html>
